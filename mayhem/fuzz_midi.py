@@ -3,12 +3,15 @@ import random
 
 import atheris
 import sys
+
+t
 import fuzz_helpers
 import random
 
 with atheris.instrument_imports(include=["pretty_midi"]):
     import pretty_midi
 
+from mido import KeySignatureError
 def TestOneInput(data):
     fdp = fuzz_helpers.EnhancedFuzzedDataProvider(data)
     try:
@@ -16,7 +19,7 @@ def TestOneInput(data):
             midi_data = pretty_midi.PrettyMIDI(f)
             midi_data.estimate_tempo()
             midi_data.get_chroma()
-    except (EOFError, OSError, ValueError):
+    except (EOFError, OSError, ValueError, KeySignatureError):
         return -1
     except IndexError:
         if random.random() > .9:
