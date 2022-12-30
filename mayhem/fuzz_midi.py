@@ -3,8 +3,6 @@ import random
 
 import atheris
 import sys
-
-t
 import fuzz_helpers
 import random
 
