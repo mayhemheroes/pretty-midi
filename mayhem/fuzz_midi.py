@@ -19,10 +19,10 @@ def TestOneInput(data):
             midi_data.get_chroma()
     except (EOFError, OSError, ValueError, KeySignatureError):
         return -1
-    except IndexError:
-        if random.random() > .9:
-            raise
-        return -1
+    #except IndexError:
+     #   if random.random() > .9:
+      #      raise
+       # return -1
 def main():
     atheris.Setup(sys.argv, TestOneInput)
     atheris.Fuzz()
